@@ -681,6 +681,8 @@ blockquote footer { font-size: 15px; color: var(--ink-muted); }
   /* Pledge mobile */
   .pledge-section { padding: 64px 0; }
   .pledge-inner { flex-direction: column; gap: 40px; }
+  .pledge-form { flex-direction: column; }
+  .pledge-btn { width: 100%; justify-content: center; }
 }
 
 /* ── PLEDGE SECTION ──────────────────────────────────────────── */
