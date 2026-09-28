@@ -416,15 +416,24 @@ export default function GoodNotGoodHome() {
   const handleNewsletter = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setNewsletterStatus('submitting')
-    const data = new FormData(e.currentTarget)
+    const formData = new FormData(e.currentTarget)
+    
     try {
-      const res = await fetch('https://formspree.io/f/xwpbdnpj', {
+      const res = await fetch('/api/newsletter', {
         method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
+        headers: { 
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: formData.get('email') })
       })
-      setNewsletterStatus(res.ok ? 'success' : 'error')
-      if (res.ok) (e.target as HTMLFormElement).reset()
+      
+      if (res.ok) {
+        setNewsletterStatus('success')
+        ;(e.target as HTMLFormElement).reset()
+      } else {
+        setNewsletterStatus('error')
+      }
     } catch {
       setNewsletterStatus('error')
     }
