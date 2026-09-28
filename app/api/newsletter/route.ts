@@ -21,10 +21,18 @@ export async function POST(request: Request) {
         'Referer': referer,
         'Origin': origin,
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, _captcha: "false" }),
     })
 
-    const data = await res.json()
+    const text = await res.text()
+    let data: any = {}
+    try {
+      data = JSON.parse(text)
+    } catch {
+      // If FormSubmit returns HTML or empty, assume success if res.ok
+      if (res.ok) return NextResponse.json({ success: true })
+      return NextResponse.json({ error: 'Invalid response from FormSubmit' }, { status: 500 })
+    }
 
     // FormSubmit returns { success: "false" } (as a string) when it fails, but status code might be 200.
     if (res.ok && data.success !== 'false' && data.success !== false) {
@@ -36,7 +44,7 @@ export async function POST(request: Request) {
       }
       return NextResponse.json({ error: data.message || 'Failed to submit' }, { status: 400 })
     }
-  } catch (error) {
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+  } catch (error: any) {
+    return NextResponse.json({ error: 'Internal Server Error', details: error.message || String(error) }, { status: 500 })
   }
 }
