@@ -1,0 +1,11 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background square with rounded corners -->
+  <rect width="180" height="180" rx="40" fill="#202020"/>
+  
+  <!-- The Pause Symbol: Represents "The answer is in the pause" (Accountability & Consent) -->
+  <!-- Left Bar (Green) -->
+  <rect x="55" y="45" width="24" height="90" rx="12" fill="#5f8f72"/>
+  
+  <!-- Right Bar (Gold) -->
+  <rect x="101" y="45" width="24" height="90" rx="12" fill="#d6a85f"/>
+</svg>
