@@ -15,20 +15,18 @@ export const metadata: Metadata = {
     'respect',
   ],
   authors: [{ name: 'The Accountability Manual' }],
-  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'),
+  metadataBase: new URL('https://accountability-manual.vercel.app'),
   openGraph: {
     title: 'The Accountability Manual',
     description:
       'A practical guide on consent, boundaries, and being a better human in everyday situations.',
     type: 'website',
     locale: 'en_IN',
-    images: [{ url: '/images/editorial-boundaries.png', width: 1200, height: 630, alt: 'The Accountability Manual' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'The Accountability Manual',
     description: 'Practical lessons on consent, respect, and bystander intervention.',
-    images: ['/images/editorial-boundaries.png'],
   },
   icons: {
     icon: [
