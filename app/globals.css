@@ -465,7 +465,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   left: 50%;
   transform: translateX(-50%) translateY(6px);
   background: var(--ink);
-  color: #fff;
+  color: var(--bg);
   padding: 10px 13px;
   border-radius: 6px;
   font-size: 13px;
