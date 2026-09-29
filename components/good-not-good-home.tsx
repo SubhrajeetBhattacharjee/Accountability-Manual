@@ -802,8 +802,11 @@ export default function GoodNotGoodHome() {
 
       <footer className="site-footer">
         <div className="page-wrap footer-inner">
-          <Logo />
-          <span className="footer-tagline">Made for the moments that matter.</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+            <Logo />
+            <span className="footer-tagline">Made for the moments that matter.</span>
+          </div>
+          <a href="#top" className="inline-link" style={{ fontSize: '14px' }}>Back to top ↑</a>
         </div>
       </footer>
     </div>
