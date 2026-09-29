@@ -12,7 +12,6 @@ import {
 
 const brandName = 'The Accountability Manual'
 // Simulated pledge count - starts high so it feels real, increments locally on sign
-const BASE_PLEDGE_COUNT = 14_287
 
 function Logo() {
   return (
