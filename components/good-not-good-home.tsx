@@ -286,7 +286,7 @@ function PledgeSection() {
     }
   }
 
-  const shareText = `I just signed The Accountability Manual pledge. Join me in committing to listening, speaking up, and learning:`
+  const shareText = `I, ${name}, just signed The Accountability Manual pledge. Join me in committing to listening, speaking up, and learning. Take the pledge here:`
   const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://theaccountabilitymanual.com'
   
   const shareLinks = {
