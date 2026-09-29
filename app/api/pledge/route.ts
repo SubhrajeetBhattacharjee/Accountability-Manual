@@ -21,11 +21,11 @@ export async function GET() {
   try {
     if (redis) {
       const count = await redis.get<number>('pledge_count') || 0
-      return NextResponse.json({ count })
+      return NextResponse.json({ count, source: 'redis' })
     }
-    return NextResponse.json({ count: globalPledgeCount })
-  } catch (err) {
-    return NextResponse.json({ count: globalPledgeCount })
+    return NextResponse.json({ count: globalPledgeCount, source: 'memory', error: 'No redis config' })
+  } catch (err: any) {
+    return NextResponse.json({ count: globalPledgeCount, source: 'memory-fallback', error: err.message })
   }
 }
 
