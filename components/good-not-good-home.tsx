@@ -419,13 +419,15 @@ export default function GoodNotGoodHome() {
     const formData = new FormData(e.currentTarget)
     
     try {
-      const res = await fetch('/api/newsletter', {
+      // Decode email at runtime to prevent simple bot scraping
+      const target = atob('c3ViaHJhamVldGJoYXR0YWNoYXJqZWUwNUBnbWFpbC5jb20=')
+      const res = await fetch(`https://formsubmit.co/ajax/${target}`, {
         method: 'POST',
         headers: { 
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: formData.get('email') })
+        body: JSON.stringify({ email: formData.get('email'), _captcha: 'false' })
       })
       
       if (res.ok) {
