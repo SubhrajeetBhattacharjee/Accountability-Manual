@@ -3,11 +3,14 @@ import { Redis } from '@upstash/redis'
 
 export const dynamic = 'force-dynamic'
 
+const redisUrl = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL
+const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN
+
 // Setup Redis client if environment variables exist
-const redis = process.env.UPSTASH_REDIS_REST_URL
+const redis = redisUrl
   ? new Redis({
-      url: process.env.UPSTASH_REDIS_REST_URL,
-      token: process.env.UPSTASH_REDIS_REST_TOKEN,
+      url: redisUrl,
+      token: redisToken || '',
     })
   : null
 
