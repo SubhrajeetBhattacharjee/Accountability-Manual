@@ -43,15 +43,15 @@
 
 /* ── RESET ───────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-body { background: var(--bg); color: var(--ink); font-family: 'Inter', Arial, Helvetica, sans-serif; line-height: 1.5; overflow-x: hidden; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; width: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: 'Inter', Arial, Helvetica, sans-serif; line-height: 1.5; overflow-x: hidden; width: 100%; position: relative; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; border: none; background: none; }
 
 /* ── LAYOUT ──────────────────────────────────────────────────── */
-.site-shell { overflow-x: hidden; }
-.page-wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+.site-shell { overflow-x: hidden; width: 100%; position: relative; }
+.page-wrap { width: 100%; max-width: 1120px; padding: 0 24px; margin-inline: auto; }
 
 /* ── SCROLL PROGRESS ─────────────────────────────────────────── */
 .scroll-progress-track {
@@ -576,7 +576,10 @@ blockquote footer { font-size: 15px; color: var(--ink-muted); }
 
 /* ── MOBILE RESPONSIVE ───────────────────────────────────────── */
 @media (max-width: 768px) {
-  .page-wrap { width: calc(100% - 32px); }
+  .page-wrap { padding: 0 16px; }
+  
+  /* Prevent any long unbroken words from causing overflow */
+  h1, h2, h3, p { word-wrap: break-word; overflow-wrap: break-word; }
 
   /* Header */
   .header-inner { min-height: 62px; }
@@ -602,11 +605,13 @@ blockquote footer { font-size: 15px; color: var(--ink-muted); }
   .nav-cta { justify-content: center; margin-top: 8px; }
 
   /* Hero */
-  .hero { min-height: auto; padding: 80px 0 64px; flex-direction: column; gap: 40px; }
-  .hero-copy { max-width: 100%; }
-  .hero h1 { font-size: clamp(40px, 12vw, 62px); }
-  .hero-copy > p { font-size: 16px; }
-  .hero-art { width: 100%; }
+  .hero { min-height: auto; padding: 60px 0 48px; flex-direction: column; gap: 32px; text-align: center; }
+  .hero-copy { max-width: 100%; display: flex; flex-direction: column; align-items: center; }
+  .hero h1 { font-size: clamp(38px, 11vw, 54px); margin: 8px 0 16px; }
+  .hero-copy > p { font-size: 16px; text-align: center; max-width: 90%; }
+  .hero-actions { justify-content: center; width: 100%; }
+  .hero-actions .primary-button, .hero-actions .secondary-button { width: 100%; justify-content: center; }
+  .hero-art { width: 100%; max-width: 400px; margin: 0 auto; }
 
   /* Quiz */
   .demo-section { padding: 72px 0; }
@@ -670,18 +675,19 @@ blockquote footer { font-size: 15px; color: var(--ink-muted); }
   .takeaway-grid { grid-template-columns: 1fr; }
 
   /* Newsletter */
-  .newsletter-section { padding: 64px 0 80px; }
-  .newsletter-form { flex-direction: column; }
-  .newsletter-input { border-radius: 12px; }
-  .newsletter-form .primary-button { border-radius: 12px; justify-content: center; }
+  .newsletter-section { padding: 48px 0 64px; }
+  .newsletter-form { flex-direction: column; width: 100%; gap: 12px; }
+  .newsletter-input { border-radius: 999px; width: 100%; text-align: center; }
+  .newsletter-form .primary-button { border-radius: 999px; width: 100%; justify-content: center; }
 
   /* Footer */
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
   .footer-tagline { font-size: 12px; }
   /* Pledge mobile */
-  .pledge-section { padding: 64px 0; }
-  .pledge-inner { flex-direction: column; gap: 40px; }
-  .pledge-form { flex-direction: column; }
+  .pledge-section { padding: 56px 0; }
+  .pledge-inner { flex-direction: column; gap: 32px; }
+  .pledge-form { flex-direction: column; width: 100%; gap: 12px; }
+  .pledge-input { text-align: center; }
   .pledge-btn { width: 100%; justify-content: center; }
 }
 
